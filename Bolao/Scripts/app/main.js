@@ -1,9 +1,9 @@
-﻿define(['jquery', 'underscore', 'bootstrap', 'emojify', 'app/aposta', 'app/ranking'], function ($, _, bootstrap, emojify, Aposta, Ranking) {
+﻿'strict'
+
+define(['jquery', 'underscore', 'react', 'bootstrap', 'emojify', 'app/aposta', 'jsx!components/ranking'], function ($, _, React, bootstrap, emojify, Aposta, RankingComponent) {
     this.apostas = [];
     this.results = [];
-    this.last = '';
-
-    $.ajaxSetup({ cache: false });
+    this.lastUpdate = '-';
 
     var getApostas = function () {
         var self = this;
@@ -53,38 +53,27 @@
             _.each(data, function (v) {
                 if (v.sResult !== 'U') {
                     self.results[getIndex(v.iId)] = getScore(v.sScore);
-                    self.last = toString(v);
+                    self.lastUpdate = toString(v);
                 }
             });
         });
     };
 
     var renderRanking = function () {
-        $('#body').html('<h3>Ranking</h3><p class="text-muted">' + this.last + '</p><div class="table"><table id="ranking" class="table"><thead><tr><th>#</th><th>Nome</th><th>Pontos</th></tr></thead><tbody></tbody></table></div>');
-        var rows = $('#ranking').find('tbody');
-        var ranking = new Ranking(this.apostas, this.results);
-        var i = 1;
-        _.each(ranking.values, function (v) {
-            if (v[0].indexOf('Macaco') > -1) {
-                rows.append('<tr class="warning"><td>' + i + '</td><td>' + v[0] + '</td><td>' + v[1] + '</td></tr>');
-            } else {
-                rows.append('<tr><td>' + i + '</td><td>' + v[0] + '</td><td>' + v[1] + '</td></tr>');
-            }
-            i++;
+        var self = this;
+        footballpool().done(function () {
+            var data = { apostas: self.apostas, results: self.results, lastUpdate: self.lastUpdate };
+            React.renderComponent(RankingComponent(data), $('#content')[0]);
+            emojify.run();
         });
-        emojify.run();
     };
 
-    $(function () {
-        $.when(getApostas(), getResults()).done(function () {
-            footballpool().done(function () {
-                renderRanking();
-                setInterval(function () {
-                    $.when(footballpool()).done(function () {
-                        renderRanking();
-                    });
-                }, 60000);
-            });
-        });
+    $.ajaxSetup({ cache: false });
+
+    $.when(getApostas(), getResults()).done(function () {
+        renderRanking();
+        setInterval(function () {
+            renderRanking();
+        }, 60000);
     });
 });

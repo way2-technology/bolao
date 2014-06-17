@@ -26,10 +26,11 @@
         </div>
     </div>
     <div class="container">
+        @RenderBody()
         <div>
             <img src="@Url.Content("~/images/header.png")" style="width: 100%; max-width: 1050px;" />
         </div>
-        @RenderBody()
+        <div id="content"></div>
     </div>
 </body>
 </html>

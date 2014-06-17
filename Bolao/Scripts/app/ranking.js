@@ -1,5 +1,5 @@
-﻿define(['underscore', 'app/aposta', 'app/placar'], function (_, Aposta, Placar) {
-    var ranking = function (apostas, results) {
+﻿define(['underscore'], function (_) {
+    var Ranking = function (apostas, results) {
         _.each(apostas, function (a) {
             a.totalize(results);
         });
@@ -9,10 +9,10 @@
             return a.total;
         }).value().reverse();
 
-        this.values = _.map(sorted, function (a) {
+        this.itens = _.map(sorted, function (a) {
             return [a.nome, a.total];
         });
     };
 
-    return ranking;
+    return Ranking;
 });

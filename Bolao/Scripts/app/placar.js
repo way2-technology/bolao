@@ -1,5 +1,5 @@
 ﻿define(function () {
-    var placar = function (data) {
+    var Placar = function (data) {
         if (data.length === 0) {
             return;
         }
@@ -16,15 +16,15 @@
         }
     };
 
-    placar.prototype.acertou = function (data) {
-        var p = new placar(data);
+    Placar.prototype.acertou = function (data) {
+        var p = new Placar(data);
         return this.v1 !== undefined && this.v1 === p.v1 && this.v2 === p.v2;
     };
 
-    placar.prototype.acertouVencedor = function (data) {
-        var p = new placar(data);
+    Placar.prototype.acertouVencedor = function (data) {
+        var p = new Placar(data);
         return this.vencedor !== undefined && this.vencedor === p.vencedor;
     };
 
-    return placar;
+    return Placar;
 });
