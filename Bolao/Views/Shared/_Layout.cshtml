@@ -9,27 +9,11 @@
     <link rel="stylesheet" href="@Url.Content("~/Content/css/site.css")">
     <script>
         var BASE_URL = '@Url.Content("~/")';
-        var CONTENT_URL = '@Url.Content("~/Content/")';
     </script>
     <script src="@Url.Content("~/Scripts/lib/require.js")" data-main="@Url.Content("~/Scripts/app.js")"></script>
 </head>
 <body>
-    <div class="blog-masthead">
-        <div class="container">
-            <nav class="blog-nav">
-                <a class="blog-nav-item active">Ranking</a>
-                <a class="blog-nav-item">Resultados</a>
-                <a class="blog-nav-item">Regras</a>
-                <a class="blog-nav-item">Prêmio</a>
-            </nav>
-        </div>
-    </div>
-    <div class="container">
-        @RenderBody()
-        <div>
-            <img src="@Url.Content("~/images/header.png")" style="width: 100%; max-width: 1050px;" />
-        </div>
-        <div id="content"></div>
-    </div>
+    @RenderBody()
+    <div id="content"></div>
 </body>
 </html>

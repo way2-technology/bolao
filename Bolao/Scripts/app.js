@@ -21,4 +21,6 @@
   }
 });
 
-requirejs(['app/main']);
+requirejs(['jquery', 'react', 'bootstrap', 'jsx!components/app'], function ($, React, bootstrap, App) {
+  React.renderComponent(App(null), $('#content')[0]);
+});

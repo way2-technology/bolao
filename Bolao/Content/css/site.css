@@ -28,6 +28,10 @@
     border-bottom: 5px solid;
     border-left: 5px solid transparent;
 }
+.header {
+    width: 100%; 
+    max-width: 1050px;
+}
 .emoji {
     width: 22px;
     height: 22px;

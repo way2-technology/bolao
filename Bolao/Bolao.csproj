@@ -1028,9 +1028,12 @@
     <Content Include="images\header.png" />
     <Content Include="Scripts\app.js" />
     <Content Include="Scripts\app\aposta.js" />
-    <Content Include="Scripts\app\main.js" />
+    <Content Include="Scripts\app\data.js" />
     <Content Include="Scripts\app\placar.js" />
     <Content Include="Scripts\components\ranking-item.jsx" />
+    <Content Include="Scripts\components\app.jsx" />
+    <Content Include="Scripts\components\menu.jsx" />
+    <Content Include="Scripts\components\menu-item.jsx" />
     <None Include="Scripts\components\ranking.jsx" />
     <Content Include="Scripts\app\ranking.js" />
     <Content Include="Areas\HelpPage\Views\Web.config" />
@@ -1044,9 +1047,6 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\HelpPageApiModel.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
-    <Content Include="Content\results.json" />
-    <Content Include="Content\apostas.json" />
-    <Content Include="Scripts\helloworld.js" />
     <Content Include="Scripts\lib\bootstrap.min.js" />
     <Content Include="Scripts\lib\emojify.min.js" />
     <Content Include="Scripts\lib\jquery-2.1.1.min.js" />

@@ -16,7 +16,7 @@ define(['jquery', 'underscore', 'react', 'emojify', 'app/data', 'app/aposta', 'a
     return value.iId + ' - ' + value.Team1.sName + ' x ' + value.Team2.sName + ' (' + value.sScore + ')';
   };
 
-  var RankingComponent = React.createClass({
+  var RankingTable = React.createClass({
     footballPool: function() {
       $.ajax({
         type: 'GET',
@@ -85,5 +85,5 @@ define(['jquery', 'underscore', 'react', 'emojify', 'app/data', 'app/aposta', 'a
     }
   });
 
-  return RankingComponent;
+  return RankingTable;
 });
