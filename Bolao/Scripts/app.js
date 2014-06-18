@@ -8,7 +8,7 @@
     emojify: 'emojify.min',
     jquery: 'jquery-2.1.1.min',
     JSXTransformer: 'JSXTransformer-0.10.0',
-    react: 'react',
+    react: 'react.min',
     underscore: 'underscore-min'
   },
   shim: {

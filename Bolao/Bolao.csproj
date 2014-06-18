@@ -1035,7 +1035,7 @@
     <Content Include="Scripts\components\menu.jsx" />
     <Content Include="Scripts\components\menu-item.jsx" />
     <Content Include="Scripts\components\resultados.jsx" />
-    <None Include="Scripts\components\ranking.jsx" />
+    <Content Include="Scripts\components\ranking.jsx" />
     <Content Include="Scripts\app\ranking.js" />
     <Content Include="Areas\HelpPage\Views\Web.config" />
     <Content Include="Areas\HelpPage\Views\Shared\_Layout.cshtml" />
@@ -1059,6 +1059,7 @@
     <Content Include="Scripts\lib\react.js" />
     <Content Include="Scripts\lib\react.min.js" />
     <Content Include="Scripts\lib\require.js" />
+    <Content Include="Scripts\lib\text.js" />
     <Content Include="Scripts\lib\underscore-min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
