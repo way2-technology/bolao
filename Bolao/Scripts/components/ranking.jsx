@@ -33,27 +33,26 @@ define(['jquery', 'underscore', 'react', 'emojify', 'app/data', 'app/aposta', 'a
               results[getIndex(value.iId)] = [];
             }
           });
-          var data = { apostas: this.state.apostas, results: results, lastUpdate: lastUpdate };
-          this.setState(data);
+          this.setState({ results: results, lastUpdate: lastUpdate });
         }.bind(this)
       }).done(function() {
         emojify.run();
       });
     },
     getInitialState: function() {
-      var apostas = [];
-      var results = [];
-      _.each(APOSTAS, function (a) {
-        apostas.push(new Aposta(a.nome, a.placares))
+      var apostas = _.map(APOSTAS, function(a) {
+        return new Aposta(a.nome, a.placares)
       });
-      _.each(RESULTS, function (a) {
-        results.push([])
+      var results = _.map(RESULTS, function() {
+        return [];
       });
-      return { apostas: apostas, results: results };
+      return { apostas: apostas, results: results, lastUpdate: 'loading...' };
     },
     componentWillMount: function() {
       this.footballPool();
-      setInterval(this.footballPool, this.props.pollInterval);
+      if (this.props.pollInterval) {
+        setInterval(this.footballPool, this.props.pollInterval);
+      }
     },
     render: function () {
       var ranking = new Ranking(this.state.apostas, this.state.results);

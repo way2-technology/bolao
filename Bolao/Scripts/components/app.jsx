@@ -1,8 +1,31 @@
 ﻿'use strict'
 
-define(['react', 'jsx!components/menu', 'jsx!components/ranking'], function (React, Menu, RankingTable) {
+define(['react', 'director', 'jsx!components/menu', 'jsx!components/ranking', 'jsx!components/resultados', 'jsx!components/regras', 'jsx!components/premio'], function (React, Director, Menu, Ranking, Resultados, Regras, Premio) {
   var App = React.createClass({
+    getInitialState: function() {
+      return { currentPage: 'ranking' };
+    },
+
+    componentDidMount: function() {
+      var router = Router({
+        '/ranking': this.setState.bind(this, { currentPage: 'ranking' }),
+        '/resultados': this.setState.bind(this, { currentPage: 'resultados' }),
+        '/regras': this.setState.bind(this, { currentPage: 'regras' }),
+        '/premio': this.setState.bind(this, { currentPage: 'premio' })
+      });
+      router.init();
+    },
     render: function () {
+      var partial;
+      if (this.state.currentPage === 'resultados') {
+        partial = <Resultados />
+      } else if (this.state.currentPage === 'regras') {
+        partial = <Regras />;
+      } else if (this.state.currentPage === 'premio') {
+        partial = <Premio />;
+      } else {
+        partial = <Ranking pollInterval={60000} />;
+      }
       return (
         <div>
           <div className="blog-masthead">
@@ -12,7 +35,7 @@ define(['react', 'jsx!components/menu', 'jsx!components/ranking'], function (Rea
           </div>
           <div className="container">
             <img className="header" src={BASE_URL + 'images/header.png'} />
-            <RankingTable pollInterval={60000} />
+            {partial}
           </div>
         </div>
       );

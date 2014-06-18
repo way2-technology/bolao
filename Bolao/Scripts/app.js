@@ -4,10 +4,11 @@
     app: '../app',
     components: '../components',
     bootstrap: 'bootstrap.min',
+    director: 'director.min',
     emojify: 'emojify.min',
     jquery: 'jquery-2.1.1.min',
     JSXTransformer: 'JSXTransformer-0.10.0',
-    react: 'react.min',
+    react: 'react',
     underscore: 'underscore-min'
   },
   shim: {
@@ -21,6 +22,6 @@
   }
 });
 
-requirejs(['jquery', 'react', 'bootstrap', 'jsx!components/app'], function ($, React, bootstrap, App) {
-  React.renderComponent(App(null), $('#content')[0]);
+requirejs(['react', 'bootstrap', 'jsx!components/app'], function (React, bootstrap, App) {
+  React.renderComponent(App(null), document.body);
 });
