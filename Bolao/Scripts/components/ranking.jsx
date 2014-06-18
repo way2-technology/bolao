@@ -1,43 +1,14 @@
 ﻿'use strict'
 
-define(['jquery', 'underscore', 'react', 'emojify', 'app/data', 'app/aposta', 'app/ranking', 'jsx!components/ranking-item'], function ($, _, React, emojify, data, Aposta, Ranking, RankingItem) {
-  var getIndex = function (iId) {
-    for (var i = 0; i < INDEXES.length; i++) {
-      if (INDEXES[i] === iId) {
-        return i;
-      }
-    }
-  };
-  var getScore = function (sScore) {
-    var a = sScore.split('-');
-    return [parseInt(a[0]), parseInt(a[1])];
-  };
-  var toString = function (value) {
-    return value.iId + ' - ' + value.Team1.sName + ' x ' + value.Team2.sName + ' (' + value.sScore + ')';
-  };
+define(['jquery', 'underscore', 'react', 'emojify', 'app/feed', 'app/aposta', 'app/ranking', 'jsx!components/ranking-item'], function ($, _, React, emojify, Feed, Aposta, Ranking, RankingItem) {
 
   var RankingTable = React.createClass({
-    footballPool: function() {
-      $.ajax({
-        type: 'GET',
-        url: BASE_URL + 'FootballPool',
-        dataType: 'json',
-        success: function(data) {
-          var results = [];
-          var lastUpdate = '-';
-          _.each(data, function (value) {
-            if (value.sResult !== 'U') {
-              results[getIndex(value.iId)] = getScore(value.sScore);
-              lastUpdate = toString(value);
-            } else {
-              results[getIndex(value.iId)] = [];
-            }
-          });
-          this.setState({ results: results, lastUpdate: lastUpdate });
-        }.bind(this)
-      }).done(function() {
+    updateResults: function() {
+      var feed = new Feed();
+      feed.footballPool(function (results, lastUpdate) {
+        this.setState({ results: results, lastUpdate: lastUpdate });
         emojify.run();
-      });
+      }.bind(this));
     },
     getInitialState: function() {
       var apostas = _.map(APOSTAS, function(a) {
@@ -49,9 +20,9 @@ define(['jquery', 'underscore', 'react', 'emojify', 'app/data', 'app/aposta', 'a
       return { apostas: apostas, results: results, lastUpdate: 'loading...' };
     },
     componentWillMount: function() {
-      this.footballPool();
+      this.updateResults();
       if (this.props.pollInterval) {
-        setInterval(this.footballPool, this.props.pollInterval);
+        setInterval(this.updateResults, this.props.pollInterval);
       }
     },
     render: function () {

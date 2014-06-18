@@ -22,6 +22,6 @@
   }
 });
 
-requirejs(['react', 'bootstrap', 'jsx!components/app'], function (React, bootstrap, App) {
+requirejs(['react', 'bootstrap', 'jsx!components/app', 'app/data'], function (React, bootstrap, App) {
   React.renderComponent(App(null), document.body);
 });
