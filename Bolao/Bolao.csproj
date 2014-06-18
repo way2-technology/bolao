@@ -113,6 +113,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -133,12 +134,11 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
-    <Compile Include="Controllers\FootballPoolController.cs" />
+    <Compile Include="Controllers\ProxyController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Aposta.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -1029,6 +1029,7 @@
     <Content Include="Scripts\app.js" />
     <Content Include="Scripts\app\aposta.js" />
     <Content Include="Scripts\app\data.js" />
+    <Content Include="Scripts\app\feed.js" />
     <Content Include="Scripts\app\placar.js" />
     <Content Include="Scripts\components\ranking-item.jsx" />
     <Content Include="Scripts\components\app.jsx" />

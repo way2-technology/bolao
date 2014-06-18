@@ -5,7 +5,7 @@ define(['jquery', 'underscore', 'react', 'emojify', 'app/feed', 'app/aposta', 'a
   var RankingTable = React.createClass({
     updateResults: function() {
       var feed = new Feed();
-      feed.footballPool(function (results, lastUpdate) {
+      feed.worldCupSfgIo(function (results, lastUpdate) {
         this.setState({ results: results, lastUpdate: lastUpdate });
         emojify.run();
       }.bind(this));
