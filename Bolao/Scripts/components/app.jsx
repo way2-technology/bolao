@@ -2,10 +2,10 @@
 
 define(['react', 'director', 'jsx!components/menu', 'jsx!components/ranking', 'jsx!components/resultados', 'jsx!components/regras', 'jsx!components/premio'], function (React, Director, Menu, Ranking, Resultados, Regras, Premio) {
   var App = React.createClass({
-    getInitialState: function() {
+    getInitialState: function () {
       return { currentPage: 'ranking' };
     },
-    componentDidMount: function() {
+    componentDidMount: function () {
       var router = Router({
         '/ranking': this.setState.bind(this, { currentPage: 'ranking' }),
         '/resultados': this.setState.bind(this, { currentPage: 'resultados' }),

@@ -32,9 +32,10 @@ define(['jquery', 'underscore', 'react', 'emojify', 'app/feed', 'app/aposta', 'a
     },
     componentWillMount: function () {
       this.updateResults();
-      if (this.props.pollInterval) {
-        setInterval(this.updateResults, this.props.pollInterval);
-      }
+      this.setState({ interval: setInterval(this.updateResults, this.props.pollInterval) });
+    },
+    componentWillUnmount: function () {
+      clearInterval(this.state.interval);
     },
     render: function () {
       var ranking = new Ranking(this.state.apostas, this.state.results, this.state.lastUpdate);
