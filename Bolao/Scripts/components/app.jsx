@@ -5,7 +5,6 @@ define(['react', 'director', 'jsx!components/menu', 'jsx!components/ranking', 'j
     getInitialState: function() {
       return { currentPage: 'ranking' };
     },
-
     componentDidMount: function() {
       var router = Router({
         '/ranking': this.setState.bind(this, { currentPage: 'ranking' }),

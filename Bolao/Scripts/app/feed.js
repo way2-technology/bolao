@@ -1,20 +1,6 @@
 ﻿'use strict'
 
 define(['jquery'], function ($) {
-
-  var getIndex = function (match) {
-    for (var i = 0; i < INDEXES.length; i++) {
-      if (INDEXES[i] === match) {
-        return i;
-      }
-    }
-  };
-
-  var getDate = function () {
-    var now = new Date();
-    return now.getDate() + '/' + now.getMonth() + '/' + now.getFullYear() + ' ' + now.getHours() + ':' + now.getMinutes() + ':' + now.getSeconds();
-  };
-
   var Feed = function () {
     this.results = [];
     this.lastUpdate = [];
@@ -28,11 +14,13 @@ define(['jquery'], function ($) {
     $.getJSON(BASE_URL + 'Proxy/FootballPool', function (data) {
       _.each(data, function (match) {
         if (match.sResult !== 'U') {
-          var score = match.sScore.split('-');
-          this.results[getIndex(match.iId)] = [parseInt(score[0]), parseInt(score[1])];
-          this.lastUpdate = match.iId + ' - ' + match.Team1.sName + ' x ' + match.Team2.sName + ' (' + match.sScore + ')';
+          var sScore = match.sScore.split('-');
+          var score1 = parseInt(sScore[0]);
+          var score2 = parseInt(sScore[1]);
+          this.results[match.iId - 1] = [score1, score2];
+          this.lastUpdate = { id: match.iId, team1: match.Team1.sName, team2: match.Team2.sName, score1: score1, score2: score2 };
         } else {
-          this.results[getIndex(match.iId)] = [];
+          this.results[match.iId - 1] = [];
         }
       }.bind(this));
       callback(this.results, this.lastUpdate);
@@ -44,10 +32,10 @@ define(['jquery'], function ($) {
       var sorted = _.sortBy(data, function (match) { return match.datetime; });
       _.each(sorted, function (match) {
         if (match.status !== 'future') {
-          this.results[getIndex(match.match_number)] = [match.home_team.goals, match.away_team.goals];
-          this.lastUpdate = getDate() + ' - ' + match.home_team.country + ' ' + match.home_team.goals + ' x ' + match.away_team.goals + ' ' + match.away_team.country;
+          this.results[match.match_number - 1] = [match.home_team.goals, match.away_team.goals, match.datetime];
+          this.lastUpdate = { id: match.match_number, team1: match.home_team.country, team2: match.away_team.country, score1: match.home_team.goals, score2: match.away_team.goals };
         } else {
-          this.results[getIndex(match.match_number)] = [];
+          this.results[match.match_number - 1] = [];
         }
       }.bind(this));
       callback(this.results, this.lastUpdate);
