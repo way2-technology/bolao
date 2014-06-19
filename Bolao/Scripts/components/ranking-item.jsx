@@ -4,7 +4,7 @@ define(['react'], function (React) {
   var RankingItem = React.createClass({
     render: function () {
       var diff = this.props.previousPosition - this.props.position;
-      var description = diff > 0 ? '(+' + diff + ')' : '(' + diff + ')' 
+      var description = diff > 0 ? '(+' + diff + ')' : '(' + diff + ')';
       if (diff === 0) {
         description = '';
       }
