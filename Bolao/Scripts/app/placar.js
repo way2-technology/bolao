@@ -1,13 +1,13 @@
 ﻿'use strict'
 
 define(function () {
-  var Placar = function (data) {
-    if (data.length === 0) {
+  var Placar = function (v1, v2) {
+    if (v1 === undefined) {
       return;
     }
 
-    this.v1 = data[0];
-    this.v2 = data[1];
+    this.v1 = v1;
+    this.v2 = v2;
 
     if (this.v1 === this.v2) {
       this.vencedor = 0;
@@ -18,14 +18,12 @@ define(function () {
     }
   };
 
-  Placar.prototype.acertou = function (data) {
-    var p = new Placar(data);
-    return this.v1 !== undefined && this.v1 === p.v1 && this.v2 === p.v2;
+  Placar.prototype.acertou = function (placar) {
+    return this.v1 !== undefined && this.v1 === placar.v1 && this.v2 === placar.v2;
   };
 
-  Placar.prototype.acertouVencedor = function (data) {
-    var p = new Placar(data);
-    return this.vencedor !== undefined && this.vencedor === p.vencedor;
+  Placar.prototype.acertouVencedor = function (placar) {
+    return this.vencedor !== undefined && this.vencedor === placar.vencedor;
   };
 
   return Placar;

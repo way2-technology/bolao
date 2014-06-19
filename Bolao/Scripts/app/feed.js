@@ -1,13 +1,9 @@
 ﻿'use strict'
 
-define(['jquery'], function ($) {
+define(['jquery', 'underscore', 'app/placar'], function ($, _, Placar) {
   var Feed = function () {
     this.results = [];
     this.lastUpdate = [];
-  };
-
-  Feed.prototype.dummy = function (callback) {
-    callback(RESULTS, '-');
   };
 
   Feed.prototype.footballPool = function (callback) {
@@ -17,10 +13,10 @@ define(['jquery'], function ($) {
           var sScore = match.sScore.split('-');
           var score1 = parseInt(sScore[0]);
           var score2 = parseInt(sScore[1]);
-          this.results[match.iId - 1] = [score1, score2];
+          this.results[match.iId - 1] = new Placar(score1, score2);
           this.lastUpdate = { id: match.iId, team1: match.Team1.sName, team2: match.Team2.sName, score1: score1, score2: score2 };
         } else {
-          this.results[match.iId - 1] = [];
+          this.results[match.iId - 1] = new Placar();
         }
       }.bind(this));
       callback(this.results, this.lastUpdate);
@@ -32,10 +28,10 @@ define(['jquery'], function ($) {
       var sorted = _.sortBy(data, function (match) { return match.datetime; });
       _.each(sorted, function (match) {
         if (match.status !== 'future') {
-          this.results[match.match_number - 1] = [match.home_team.goals, match.away_team.goals, match.datetime];
+          this.results[match.match_number - 1] = new Placar(match.home_team.goals, match.away_team.goals);
           this.lastUpdate = { id: match.match_number, team1: match.home_team.country, team2: match.away_team.country, score1: match.home_team.goals, score2: match.away_team.goals };
         } else {
-          this.results[match.match_number - 1] = [];
+          this.results[match.match_number - 1] = new Placar();
         }
       }.bind(this));
       callback(this.results, this.lastUpdate);
