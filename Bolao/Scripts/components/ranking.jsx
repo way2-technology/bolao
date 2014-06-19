@@ -11,10 +11,6 @@ define(['jquery', 'underscore', 'react', 'emojify', 'app/feed', 'app/aposta', 'a
       }.bind(this));
     },
     updateLabel: function () {
-      if (!this.state.lastUpdate) {
-        this.setState({ label: 'loading...' });
-        return;
-      }
       var d = new Date();
       var s = d.getDate() + '/' + d.getMonth() + '/' + d.getFullYear() + ' ' + d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds();
       this.setState({ label: s + ' - ' + this.state.lastUpdate.team1 + ' ' + this.state.lastUpdate.score1 + ' x ' + this.state.lastUpdate.score2 + ' ' + this.state.lastUpdate.team2 });
@@ -28,7 +24,7 @@ define(['jquery', 'underscore', 'react', 'emojify', 'app/feed', 'app/aposta', 'a
       var results = _.map(RESULTS, function() {
         return new Placar();
       });
-      return { apostas: apostas, results: results };
+      return { apostas: apostas, results: results, label: 'loading...' };
     },
     componentWillMount: function () {
       this.updateResults();
@@ -44,7 +40,7 @@ define(['jquery', 'underscore', 'react', 'emojify', 'app/feed', 'app/aposta', 'a
       });
       return (
         <div>
-          <h3>Ranking</h3>
+          <h2>Ranking</h2>
           <p className="text-muted">{this.state.label}</p>
           <div className="table">
             <table id="ranking" className="table">
