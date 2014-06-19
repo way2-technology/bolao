@@ -5,7 +5,7 @@ define(['react'], function (React) {
     render: function () {
       return ( 
               <div>
-                <h3>Resultados</h3>
+                <h2>Resultados</h2>
                 <p className="text-muted">TODO</p>
               </div>
              );
