@@ -1,10 +1,10 @@
 ﻿'use strict'
 
 define(['underscore', 'app/aposta', 'app/placar'], function (_, Aposta, Placar) {
-  var Ranking = function (apostas, results, lastUpdate) {
+  var Ranking = function (apostas, results, previousPosition) {
     this.apostas = apostas;
     this.results = results;
-    this.lastUpdate = lastUpdate;
+    this.previousPosition = previousPosition;
     this.init();
   };
 
@@ -24,8 +24,12 @@ define(['underscore', 'app/aposta', 'app/placar'], function (_, Aposta, Placar) 
       } else {
         j++;
       }
-      var previousPosition = this.lastUpdate ? this.getPreviousPosition(aposta) : i;
-      return { position: i, previousPosition: previousPosition, nome: aposta.nome, pontos: aposta.pontos };
+      return {
+        position: i,
+        previousPosition: this.previousPosition ? this.getPreviousPosition(aposta) : i,
+        nome: aposta.nome,
+        pontos: aposta.pontos
+      };
     }.bind(this));
   };
 
@@ -44,18 +48,16 @@ define(['underscore', 'app/aposta', 'app/placar'], function (_, Aposta, Placar) 
   };
 
   Ranking.prototype.getPreviousResults = function () {
-    var results = [];
-    for (var i = 0; i < this.results.length; i++) {
-      results[i] = i + 1 !== this.lastUpdate.id ? this.results[i] : new Placar();
-    }
-    return results;
+    return _.map(this.results, function (placar) {
+      return !placar.ultimo ? placar : new Placar();
+    });
   };
 
   Ranking.prototype.getPreviousPosition = function (aposta) {
     var copy = _.map(this.apostas, function (aposta) {
       return new Aposta(aposta.nome, aposta.placares);
     });
-    var ranking = new Ranking(copy, this.getPreviousResults());
+    var ranking = new Ranking(copy, this.getPreviousResults(), false);
     return _.find(ranking.itens, function (item) {
       return item.nome === aposta.nome;
     }).position;

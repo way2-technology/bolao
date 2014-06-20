@@ -1,17 +1,21 @@
 ﻿'use strict'
 
 define(function () {
-  var Placar = function (v1, v2) {
-    if (v1 === undefined) {
+  var Placar = function (id, team1, team2, score1, score2, ultimo) {
+    if (id === undefined) {
       return;
     }
 
-    this.v1 = v1;
-    this.v2 = v2;
+    this.id = id;
+    this.team1 = team1;
+    this.team2 = team2;
+    this.score1 = score1;
+    this.score2 = score2;
+    this.ultimo = ultimo;
 
-    if (this.v1 === this.v2) {
+    if (this.score1 === this.score2) {
       this.vencedor = 0;
-    } else if (this.v1 > this.v2) {
+    } else if (this.score1 > this.score2) {
       this.vencedor = 1;
     } else {
       this.vencedor = 2;
@@ -19,7 +23,7 @@ define(function () {
   };
 
   Placar.prototype.acertou = function (placar) {
-    return this.v1 !== undefined && this.v1 === placar.v1 && this.v2 === placar.v2;
+    return this.score1 !== undefined && this.score1 === placar.score1 && this.score2 === placar.score2;
   };
 
   Placar.prototype.acertouVencedor = function (placar) {

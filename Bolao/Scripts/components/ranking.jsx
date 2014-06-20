@@ -5,7 +5,7 @@ define(['jquery', 'underscore', 'react', 'emojify', 'app/feed', 'app/aposta', 'a
     getInitialState: function () {
       var apostas = _.map(APOSTAS, function(aposta) {
         return new Aposta(aposta.nome, _.map(aposta.placares, function (placar) {
-          return new Placar(placar[0], placar[1]);
+          return new Placar(0, '-', '-', placar[0], placar[1]);
         }));
       });
       var results = _.map(RESULTS, function() {
@@ -22,19 +22,20 @@ define(['jquery', 'underscore', 'react', 'emojify', 'app/feed', 'app/aposta', 'a
     },
     updateResults: function () {
       var feed = new Feed();
-      feed.worldCupSfgIo(function (results, lastUpdate) {
-        this.setState({ results: results, lastUpdate: lastUpdate });
+      feed.worldCupSfgIo(function (results) {
+        this.setState({ results: results });
         this.updateLabel();
         emojify.run();
       }.bind(this));
     },
     updateLabel: function () {
+      var ultimo = _.find(this.state.results, function (placar) { return placar.ultimo; });
       var d = new Date();
       var s = d.getDate() + '/' + d.getMonth() + '/' + d.getFullYear() + ' ' + d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds();
-      this.setState({ label: s + ' - ' + this.state.lastUpdate.team1 + ' ' + this.state.lastUpdate.score1 + ' x ' + this.state.lastUpdate.score2 + ' ' + this.state.lastUpdate.team2 });
+      this.setState({ label: s + ' - ' + ultimo.team1 + ' ' + ultimo.score1 + ' x ' + ultimo.score2 + ' ' + ultimo.team2 });
     },
     render: function () {
-      var ranking = new Ranking(this.state.apostas, this.state.results, this.state.lastUpdate);
+      var ranking = new Ranking(this.state.apostas, this.state.results, true);
       var itens = ranking.itens.map(function (item) {
         return <RankingItem key={item.nome} position={item.position} previousPosition={item.previousPosition} pontos={item.pontos} />;
       });
