@@ -31,22 +31,22 @@ define(['react'], function (React) {
                     </tr>
                     <tr>
                       <td>2a fase (oitavas)</td>
-                      <td>48</td>
+                      <td>8</td>
                       <td>27/06/2014 às 18h</td>
                     </tr>
                     <tr>
                       <td>3a fase (quartas)</td>
-                      <td>48</td>
+                      <td>4</td>
                       <td>02/07/2014 às 18h</td>
                     </tr>
                     <tr>
                       <td>4a fase (semi)</td>
-                      <td>48</td>
+                      <td>2</td>
                       <td>06/07/2014 às 18h</td>
                     </tr>
                     <tr>
                       <td>5a fase (finais)</td>
-                      <td>48</td>
+                      <td>2</td>
                       <td>10/07/2014 às 18h</td>
                     </tr>
                   </tbody>
@@ -54,10 +54,10 @@ define(['react'], function (React) {
                 <h3>Regras de pontuação</h3>
                 <p>Serão somados pontos para cada placar ou resultado correto:</p>
                 <ul>  
-                  <li>Placar correto: acerto exato do placar do jogo</li>
+                  <li>Placar correto: acertou o placar do jogo</li>
                   <li>Resultado correto: errou o placar mas acertou o resultado, ou seja, quem ganhou ou se houve um empate</li>
                 </ul>
-                <p>A pontuação será diferente para cada fase, buscando manter a chance de todos até o fim:</p>
+                <p>A pontuação será diferente em cada fase, buscando manter a chance de todos até o fim:</p>
                 <table className="table">
                   <thead>
                     <tr>
@@ -97,14 +97,14 @@ define(['react'], function (React) {
                 <h4>Bônus</h4>
                 <p>Na planilha da 1a fase deverão ser preenchidas duas alternativas para o campeão da Copa, não podendo repetir o mesmo time nas duas alternativas:</p>
                 <ul>
-                  <li>Acerto do campeão da copa com a 1a alternativa: 20 pontos de bônus</li>
-                  <li>Acerto do campeão da copa com a 2a alternativa: 10 pontos de bônus</li>
+                  <li>Acerto do campeão com a 1a alternativa: 20 pontos</li>
+                  <li>Acerto do campeão com a 2a alternativa: 10 pontos</li>
                 </ul>
                 <h4>Exceções</h4>
                 <p>Será permitida a entrada de um novo participante em qualquer fase do Bolão, porém sua pontuação inicial será ZERO.</p>
                 <p>Os apostadores "Macacos" não participam do Bolão, eles existem apenas para animar a disputa. Caso um deles seja o vencedor, o prêmio será entregue para o participante que tiver a segunda maior pontuação.</p>
                 <p>Qualquer outra situação não coberta por este regulamento será avaliada sob demanda.</p>
-                <h3>Estatísticas de pontuação</h3>
+                <h3>Estatísticas</h3>
                 <table className="table">
                   <thead>
                     <tr>
