@@ -12,10 +12,10 @@ define(['react', 'jsx!components/menu-item'], function (React, MenuItem) {
       var active = this.state.active || this.props.currentPage;
       return (
         <nav className="blog-nav">
-          <MenuItem key='ranking' active={active} onClick={this.handleClick}>Ranking</MenuItem>
-          <MenuItem key='resultados' active={active} onClick={this.handleClick}>Resultados</MenuItem>
-          <MenuItem key='regras' active={active} onClick={this.handleClick}>Regras</MenuItem>
-          <MenuItem key='premio' active={active} onClick={this.handleClick}>Prêmio</MenuItem>
+          <MenuItem key='ranking' active={active} handleClick={this.handleClick}>Ranking</MenuItem>
+          <MenuItem key='resultados' active={active} handleClick={this.handleClick}>Resultados</MenuItem>
+          <MenuItem key='regras' active={active} handleClick={this.handleClick}>Regras</MenuItem>
+          <MenuItem key='premio' active={active} handleClick={this.handleClick}>Prêmio</MenuItem>
         </nav>
       );
     }
