@@ -1,21 +1,21 @@
 ﻿'use strict'
 
 define(function () {
-  var Placar = function (id, team1, team2, score1, score2, ultimo) {
-    if (id === undefined) {
+  var Placar = function (id, time1, time2, placar1, placar2, ehUltimo) {
+    this.id = id;
+    this.time1 = time1;
+    this.time2 = time2;
+    this.placar1 = placar1;
+    this.placar2 = placar2;
+    this.ehUltimo = ehUltimo;
+
+    if (this.placar1 === undefined) {
       return;
     }
 
-    this.id = id;
-    this.team1 = team1;
-    this.team2 = team2;
-    this.score1 = score1;
-    this.score2 = score2;
-    this.ultimo = ultimo;
-
-    if (this.score1 === this.score2) {
+    if (this.placar1 === this.placar2) {
       this.vencedor = 0;
-    } else if (this.score1 > this.score2) {
+    } else if (this.placar1 > this.placar2) {
       this.vencedor = 1;
     } else {
       this.vencedor = 2;
@@ -23,11 +23,17 @@ define(function () {
   };
 
   Placar.prototype.acertou = function (placar) {
-    return this.score1 !== undefined && this.score1 === placar.score1 && this.score2 === placar.score2;
+    return this.placar1 !== undefined && this.placar1 === placar.placar1 && this.placar2 === placar.placar2;
   };
 
   Placar.prototype.acertouVencedor = function (placar) {
     return this.vencedor !== undefined && this.vencedor === placar.vencedor;
+  };
+
+  Placar.prototype.toString = function () {
+    var d = new Date();
+    var s = d.getDate() + '/' + d.getMonth() + '/' + d.getFullYear() + ' ' + d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds();
+    return s + ' - ' + this.time1 + ' ' + this.placar1 + ' x ' + this.placar2 + ' ' + this.time2;
   };
 
   return Placar;

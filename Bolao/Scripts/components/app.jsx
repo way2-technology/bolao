@@ -20,7 +20,7 @@ define(['react', 'director', 'jsx!components/menu', 'jsx!components/ranking', 'j
       if (this.state.currentPage === 'ranking') {
         partial = <Ranking pollInterval={60000} />;
       } else if (this.state.currentPage === 'resultados') {
-        partial = <Resultados />
+        partial = <Resultados pollInterval={60000} />
       } else if (this.state.currentPage === 'regras') {
         partial = <Regras />;
       } else if (this.state.currentPage === 'premio') {

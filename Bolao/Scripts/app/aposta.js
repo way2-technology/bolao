@@ -3,7 +3,7 @@
 define(function () {
   var Aposta = function (nome, placares) {
     this.nome = nome;
-    this.placares = placares;
+    this.placares = placares || [];
     this.pontos = 0;
   };
 

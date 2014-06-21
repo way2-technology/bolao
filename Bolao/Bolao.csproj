@@ -1033,6 +1033,7 @@
     <Content Include="Scripts\app\data.js" />
     <Content Include="Scripts\app\feed.js" />
     <Content Include="Scripts\app\placar.js" />
+    <Content Include="Scripts\components\util.js" />
     <Content Include="Scripts\components\ranking-item.jsx" />
     <Content Include="Scripts\components\app.jsx" />
     <Content Include="Scripts\components\menu.jsx" />

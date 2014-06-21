@@ -1,16 +1,15 @@
 ﻿'use strict'
 
 define(['underscore', 'app/aposta', 'app/placar'], function (_, Aposta, Placar) {
-  var Ranking = function (apostas, results, previousPosition) {
+  var Ranking = function (apostas, resultados, calculePosicaoAnterior) {
     this.apostas = apostas;
-    this.results = results;
-    this.previousPosition = previousPosition;
-    this.init();
+    this.resultados = resultados;
+    this.inicie(calculePosicaoAnterior);
   };
 
-  Ranking.prototype.init = function () {
+  Ranking.prototype.inicie = function (calculePosicaoAnterior) {
     this.totalize();
-    this.sort();
+    this.ordene();
 
     var pontos = 500;
     var i = 0;
@@ -25,8 +24,8 @@ define(['underscore', 'app/aposta', 'app/placar'], function (_, Aposta, Placar) 
         j++;
       }
       return {
-        position: i,
-        previousPosition: this.previousPosition ? this.getPreviousPosition(aposta) : i,
+        posicao: i,
+        posicaoAnterior: calculePosicaoAnterior ? this.getPosicaoAnterior(aposta) : i,
         nome: aposta.nome,
         pontos: aposta.pontos
       };
@@ -35,11 +34,11 @@ define(['underscore', 'app/aposta', 'app/placar'], function (_, Aposta, Placar) 
 
   Ranking.prototype.totalize = function () {
     _.each(this.apostas, function (aposta) {
-      aposta.totalize(this.results);
+      aposta.totalize(this.resultados);
     }.bind(this));
   };
 
-  Ranking.prototype.sort = function () {
+  Ranking.prototype.ordene = function () {
     this.apostas = _(this.apostas).chain().sortBy(function (aposta) {
       return aposta.nome;
     }).reverse().sortBy(function (aposta) {
@@ -47,20 +46,20 @@ define(['underscore', 'app/aposta', 'app/placar'], function (_, Aposta, Placar) 
     }).value().reverse();
   };
 
-  Ranking.prototype.getPreviousResults = function () {
-    return _.map(this.results, function (placar) {
-      return !placar.ultimo ? placar : new Placar();
+  Ranking.prototype.getResultadosExcetoUltimo = function () {
+    return _.map(this.resultados, function (placar) {
+      return !placar.ehUltimo ? placar : new Placar();
     });
   };
 
-  Ranking.prototype.getPreviousPosition = function (aposta) {
+  Ranking.prototype.getPosicaoAnterior = function (aposta) {
     var copy = _.map(this.apostas, function (aposta) {
       return new Aposta(aposta.nome, aposta.placares);
     });
-    var ranking = new Ranking(copy, this.getPreviousResults(), false);
+    var ranking = new Ranking(copy, this.getResultadosExcetoUltimo(), false);
     return _.find(ranking.itens, function (item) {
       return item.nome === aposta.nome;
-    }).position;
+    }).posicao;
   };
 
   return Ranking;

@@ -3,15 +3,15 @@
 define(['react'], function (React) {
   var RankingItem = React.createClass({
     render: function () {
-      var diff = this.props.previousPosition - this.props.position;
-      var description = diff > 0 ? '(+' + diff + ')' : '(' + diff + ')';
-      if (diff === 0) {
-        description = '';
+      var diferenca = this.props.posicaoAnterior - this.props.posicao;
+      var avanco = diferenca > 0 ? '(+' + diferenca + ')' : '(' + diferenca + ')';
+      if (diferenca === 0) {
+        avanco = '';
       }
       return (
-        <tr className={this.props.key.indexOf('Macaco') > -1 ? 'warning' : ''}>
-          <td>{this.props.position}</td>
-          <td>{this.props.key} <span className="small text-muted">{description}</span></td>
+        <tr className={this.props.nome.indexOf('Macaco') > -1 ? 'warning' : ''}>
+          <td>{this.props.posicao}</td>
+          <td>{this.props.nome} <span className="small text-muted">{avanco}</span></td>
           <td>{this.props.pontos}</td>
         </tr>
       );
