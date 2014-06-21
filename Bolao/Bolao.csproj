@@ -1088,6 +1088,8 @@
     <Content Include="Scripts\lib\underscore-min.map" />
     <Content Include="Scripts\components\regras.jsx" />
     <Content Include="Scripts\components\premio.jsx" />
+    <Content Include="Scripts\components\grupo.jsx" />
+    <Content Include="Scripts\components\grupo-item.jsx" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
