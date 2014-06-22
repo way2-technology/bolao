@@ -11,7 +11,14 @@ define(['underscore', 'react', 'jsx!components/grupo-item'], function (_, React,
               <table className="table table-condensed">
                 <thead>
                   <tr>
-                    <th colSpan="6" className="col-md-6">{'GRUPO ' + this.props.key}</th>
+                    <th className=""></th>
+                    <th className="col-md-3">{'GRUPO ' + this.props.key}</th>
+                    <th className=""></th>
+                    <th className=""></th>
+                    <th className=""></th>
+                    <th className=""></th>
+                    <th className=""></th>
+                    <th className="col-md-3"></th>
                     <th className="col-md-6">{titulo}</th>
                   </tr>
                 </thead>

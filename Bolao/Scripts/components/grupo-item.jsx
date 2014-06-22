@@ -1,6 +1,6 @@
 ﻿'use strict'
 
-define(['underscore', 'react'], function (_, React) {
+define(['underscore', 'react', 'app/flags'], function (_, React, Flags) {
   var GrupoItem = React.createClass({
     render: function () {
       var acertadores = _(this.props.apostas).chain().filter(function (aposta) {
@@ -16,9 +16,11 @@ define(['underscore', 'react'], function (_, React) {
               <tr className={className}>
                 <td><span className="text-muted">{this.props.key}</span></td>
                 <td><span className="pull-right">{this.props.placar.time1}</span></td>
+                <td className="text-center"><span className="f16"><div className={'flag ' + Flags[this.props.placar.time1]}></div></span></td>
                 <td className="text-center">{this.props.placar.placar1}</td>
                 <td className="text-center">x</td>
                 <td className="text-center">{this.props.placar.placar2}</td>
+                <td className="text-center"><span className="f16"><div className={'flag ' + Flags[this.props.placar.time2]}></div></span></td>
                 <td><span className="pull-left">{this.props.placar.time2}</span></td>
                 <td>{acertadores}</td>
               </tr>
