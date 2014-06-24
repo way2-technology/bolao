@@ -27,7 +27,8 @@ define(['underscore', 'app/aposta', 'app/placar'], function (_, Aposta, Placar) 
         posicao: i,
         posicaoAnterior: calculePosicaoAnterior ? this.getPosicaoAnterior(aposta) : i,
         nome: aposta.nome,
-        pontos: aposta.pontos
+        pontos: aposta.pontos,
+        ultimo: false
       };
     }.bind(this));
   };

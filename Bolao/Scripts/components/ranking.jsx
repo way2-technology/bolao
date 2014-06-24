@@ -15,8 +15,15 @@ define(['jquery', 'underscore', 'react', 'app/ranking', 'components/util', 'jsx!
     },
     render: function () {
       var ranking = new Ranking(this.state.apostas, this.state.resultados, true);
+	  var ultimo = _.last(ranking.itens).posicao;
+	  if(ultimo != 1){
+		var ultimos = _.where(ranking.itens, {posicao: ultimo});
+		_.each(ultimos, function(item){
+			item.ultimo = true;
+		});
+	  }
       var itens = ranking.itens.map(function (item) {
-        return <RankingItem key={item.nome} nome={item.nome} posicao={item.posicao} posicaoAnterior={item.posicaoAnterior} pontos={item.pontos} />;
+        return <RankingItem key={item.nome} nome={item.nome} posicao={item.posicao} ultimo={item.ultimo} posicaoAnterior={item.posicaoAnterior} pontos={item.pontos} />;
       });
       return (
         <div>
