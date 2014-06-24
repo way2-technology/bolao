@@ -15,7 +15,7 @@ define(['underscore', 'react', 'components/util', 'jsx!components/grupo'], funct
     },
     render: function () {
       var grupos = [
-        <Grupo key="A" apostas={this.state.apostas} resultados={this.state.resultados} placares={[ 1,  2, 17, 18, 34, 33]} />,
+        <Grupo key="A" apostas={this.state.apostas} resultados={this.state.resultados} placares={[ 1,  2, 17, 18, 33, 34]} />,
         <Grupo key="B" apostas={this.state.apostas} resultados={this.state.resultados} placares={[ 3,  4, 19, 20, 35, 36]} />,
         <Grupo key="C" apostas={this.state.apostas} resultados={this.state.resultados} placares={[ 5,  6, 21, 22, 37, 38]} />,
         <Grupo key="D" apostas={this.state.apostas} resultados={this.state.resultados} placares={[ 7,  8, 23, 24, 39, 40]} />,
