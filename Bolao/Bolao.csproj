@@ -1062,6 +1062,7 @@
     <Content Include="Scripts\lib\jsx.js" />
     <Content Include="Scripts\lib\JSXTransformer-0.10.0.js" />
     <Content Include="Scripts\lib\JSXTransformer.js" />
+    <Content Include="Scripts\lib\moment.min.js" />
     <Content Include="Scripts\lib\react-with-addons.min.js" />
     <Content Include="Scripts\lib\react.js" />
     <Content Include="Scripts\lib\react.min.js" />

@@ -8,6 +8,7 @@
     emojify: 'emojify.min',
     jquery: 'jquery-2.1.1.min',
     JSXTransformer: 'JSXTransformer-0.10.0',
+    moment: 'moment.min',
     react: 'react.min',
     underscore: 'underscore-min'
   },

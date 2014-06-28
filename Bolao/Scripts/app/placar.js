@@ -1,6 +1,6 @@
 ﻿'use strict'
 
-define(function () {
+define(['moment'], function (moment) {
   var Placar = function (id, time1, time2, placar1, placar2, ehUltimo) {
     this.id = id;
     this.time1 = time1;
@@ -31,9 +31,7 @@ define(function () {
   };
 
   Placar.prototype.toString = function () {
-    var d = new Date();
-    var s = d.getDate() + '/' + d.getMonth() + '/' + d.getFullYear() + ' ' + d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds();
-    return s + ' - ' + this.time1 + ' ' + this.placar1 + ' x ' + this.placar2 + ' ' + this.time2;
+    return moment().format('DD/MM/YYYY HH:mm:ss') + ' - ' + this.time1 + ' ' + this.placar1 + ' x ' + this.placar2 + ' ' + this.time2;
   };
 
   return Placar;
