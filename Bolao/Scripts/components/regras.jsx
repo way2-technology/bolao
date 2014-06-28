@@ -54,7 +54,7 @@ define(['react'], function (React) {
                 <h3>Regras de pontuação</h3>
                 <p>Serão somados pontos para cada placar ou resultado correto:</p>
                 <ul>  
-                  <li>Placar correto: acertou o placar do jogo</li>
+                  <li>Placar correto: acertou o placar do jogo*</li>
                   <li>Resultado correto: errou o placar mas acertou o resultado, ou seja, quem ganhou ou se houve um empate</li>
                 </ul>
                 <p>A pontuação será diferente em cada fase, buscando manter a chance de todos até o fim:</p>
@@ -94,6 +94,7 @@ define(['react'], function (React) {
                     </tr>
                   </tbody>
                 </table>
+                <p>* A partir da segunda fase, o placar correto é o resultado da partida no tempo normal e prorrogação.</p>
                 <h4>Bônus</h4>
                 <p>Na planilha da 1a fase deverão ser preenchidas duas alternativas para o campeão da Copa, não podendo repetir o mesmo time nas duas alternativas:</p>
                 <ul>
