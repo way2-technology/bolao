@@ -28,7 +28,7 @@ define(['jquery', 'underscore', 'app/placar'], function ($, _, Placar) {
       });
     },
     worldCupSfgIo: function (callback) {
-      $.getJSON(BASE_URL + 'Proxy/WorldCupSfgIo', function (data) {
+      $.getJSON('http://worldcup.sfg.io/matches?callback=?', function (data) {
         var resultados = [];
         var ultimo = 1;
         _(data).chain().sortBy(function (match) {
