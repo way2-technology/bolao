@@ -11,7 +11,7 @@ define(['react'], function (React) {
       return (
         <tr className={this.props.nome.indexOf('Macaco') > -1 ? 'warning' : ''}>
           <td>{this.props.posicao}</td>
-          <td>{this.props.nome} {this.props.ultimo ? ':flashlight:' : ''}<span className="small text-muted">{avanco}</span></td>
+          <td>{this.props.nome} {this.props.ehLanterna ? ':flashlight:' : ''}<span className="small text-muted">{avanco}</span></td>
           <td>{this.props.pontos}</td>
         </tr>
       );
