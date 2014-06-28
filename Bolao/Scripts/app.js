@@ -20,7 +20,8 @@
   },
   jsx: {
     fileExtension: '.jsx'
-  }
+  },
+  urlArgs: 'ver=1'
 });
 
 requirejs(['react', 'bootstrap', 'jsx!components/app'], function (React, bootstrap, App) {
