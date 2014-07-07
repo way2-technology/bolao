@@ -130,7 +130,7 @@ define(['react'], function (React) {
                       <td>2a à 5a fase</td>
                       <td></td>
                       <td>48</td>
-                      <td>(75%)</td>
+                      <td>(25%)</td>
                       <td>144</td>
                       <td>(50%)</td>
                     </tr>
