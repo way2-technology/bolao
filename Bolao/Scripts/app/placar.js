@@ -1,18 +1,17 @@
 ﻿'use strict'
 
 define(['moment'], function (moment) {
-  var Placar = function (id, time1, time2, placar1, placar2, ehUltimo) {
+  var Placar = function (id, time1, time2, placar1, placar2) {
     this.id = id;
     this.time1 = time1;
     this.time2 = time2;
     this.placar1 = placar1;
     this.placar2 = placar2;
-    this.ehUltimo = ehUltimo;
+    this.ehUltimo = false;
 
     if (this.placar1 === undefined) {
       return;
     }
-
     if (this.placar1 === this.placar2) {
       this.vencedor = 0;
     } else if (this.placar1 > this.placar2) {

@@ -1,9 +1,11 @@
 ﻿'use strict'
 
 define(function () {
-  var Aposta = function (nome, placares) {
+  var Aposta = function (nome, placares, campeao1, campeao2) {
     this.nome = nome;
     this.placares = placares || [];
+    this.campeao1 = campeao1 || '-';
+    this.campeao2 = campeao2 || '-';
     this.pontos = 0;
   };
 
@@ -26,6 +28,11 @@ define(function () {
       } else if (this.placares[i].acertouVencedor(results[i])) {
         this.pontos += 1 * getPeso(i + 1);
       }
+    }
+    if (this.campeao1 === results['campeao']) {
+      this.pontos += 20;
+    } else if (this.campeao2 === results['campeao']) {
+      this.pontos += 10;
     }
   };
 

@@ -40,6 +40,9 @@ define(['jquery', 'underscore', 'app/placar'], function ($, _, Placar) {
           } else {
             resultados[match.match_number - 1] = new Placar(match.match_number, match.home_team.country, match.away_team.country);
           }
+          if (match.match_number === 64) {
+            resultados['campeao'] = match.winner;
+          }
         })
         marqueUltimoPlacar(resultados, ultimo);
         callback(resultados);
