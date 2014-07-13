@@ -12,7 +12,8 @@ define(['underscore', 'react'], function (_, React) {
 
   var Campeao = React.createClass({
     render: function () {
-      var alternativa1 = getAcertadores(this.props.apostas, this.props.campeao, 1);
+      var campeao = this.props.campeao ? this.props.campeao + ' :trophy:' : '';
+      var alternativa1 = getAcertadores(this.props.apostas, this.props.campeao, 1)
       var alternativa2 = getAcertadores(this.props.apostas, this.props.campeao, 2);
       return ( 
               <table className="table table-condensed">
@@ -20,7 +21,7 @@ define(['underscore', 'react'], function (_, React) {
                   <tr>
                     <th></th>
                     <th className="col-md-2">CAMPEÃO</th>
-                    <th className="col-md-10"></th>
+                    <th className="col-md-10">{campeao}</th>
                   </tr>
                 </thead>
                 <tbody>
