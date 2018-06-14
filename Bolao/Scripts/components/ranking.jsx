@@ -15,7 +15,7 @@ define(['jquery', 'underscore', 'react', 'app/ranking', 'components/util', 'jsx!
     },
     render: function () {
       var ranking = new Ranking(this.state.apostas, this.state.resultados, true);
-	  var ultimaPosicao = _.last(ranking.itens).posicao;
+      var ultimaPosicao = _.last(ranking.itens).posicao;
       var itens = ranking.itens.map(function (item) {
         return <RankingItem key={item.nome} nome={item.nome} posicao={item.posicao} posicaoAnterior={item.posicaoAnterior} pontos={item.pontos} ehLanterna={item.pontos > 0 && item.posicao === ultimaPosicao} />;
       });

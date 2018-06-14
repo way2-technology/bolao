@@ -12,19 +12,19 @@ define(['underscore', 'react', 'app/flags'], function (_, React, Flags) {
       if (this.props.placar.ehUltimo) {
         className = 'warning';
       }
-      return ( 
-              <tr className={className}>
-                <td><span className="text-muted">{this.props.key}</span></td>
-                <td><span className="pull-right">{this.props.placar.time1}</span></td>
-                <td className="text-center"><span className="f16"><div className={'flag ' + Flags[this.props.placar.time1]}></div></span></td>
-                <td className="text-center">{this.props.placar.placar1}</td>
-                <td className="text-center">x</td>
-                <td className="text-center">{this.props.placar.placar2}</td>
-                <td className="text-center"><span className="f16"><div className={'flag ' + Flags[this.props.placar.time2]}></div></span></td>
-                <td><span className="pull-left">{this.props.placar.time2}</span></td>
-                <td>{acertadores}</td>
-              </tr>
-             );
+      return (
+        <tr className={className}>
+          <td><span className="text-muted">{this.props.key}</span></td>
+          <td><span className="pull-right">{this.props.placar.time1}</span></td>
+          <td className="text-center"><span className="f16"><div className={'flag ' + Flags[this.props.placar.time1]}></div></span></td>
+          <td className="text-center">{this.props.placar.placar1}</td>
+          <td className="text-center">x</td>
+          <td className="text-center">{this.props.placar.placar2}</td>
+          <td className="text-center"><span className="f16"><div className={'flag ' + Flags[this.props.placar.time2]}></div></span></td>
+          <td><span className="pull-left">{this.props.placar.time2}</span></td>
+          <td>{acertadores}</td>
+        </tr>
+      );
     }
   });
 

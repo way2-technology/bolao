@@ -2,8 +2,8 @@
 
 define(['react', 'jsx!components/menu-item'], function (React, MenuItem) {
   var Menu = React.createClass({
-    getInitialState: function() {
-      return { };
+    getInitialState: function () {
+      return {};
     },
     render: function () {
       var active = this.state.active || this.props.currentPage;

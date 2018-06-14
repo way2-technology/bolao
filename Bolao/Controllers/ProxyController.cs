@@ -1,6 +1,5 @@
 ﻿using System.Net.Http;
 using System.Web.Mvc;
-using Newtonsoft.Json;
 
 namespace Bolao.Controllers {
     public class ProxyController : Controller {

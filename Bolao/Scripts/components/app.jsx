@@ -3,7 +3,7 @@
 define(['react', 'director', 'jsx!components/menu', 'jsx!components/ranking', 'jsx!components/resultados', 'jsx!components/regras', 'jsx!components/premio'], function (React, Director, Menu, Ranking, Resultados, Regras, Premio) {
   var App = React.createClass({
     getInitialState: function () {
-      return { };
+      return {};
     },
     componentDidMount: function () {
       var router = Router({
@@ -34,8 +34,15 @@ define(['react', 'director', 'jsx!components/menu', 'jsx!components/ranking', 'j
             </div>
           </div>
           <div className="container">
-            <img className="header" src={BASE_URL + 'images/header.png'} />
-            {partial}
+            <div className="row">
+              <div className="col-xs-3"><img src={BASE_URL + 'images/header_left.png'} /></div>
+              <div className="col-xs-2"><img src={BASE_URL + 'images/131px-2018_FIFA_World_Cup.svg.png'} /></div>
+              <div className="col-xs-5"><h2>2018 FIFA WORLD CUP RUSSIA</h2><p>14 JUNE - 15 JULY</p></div>
+              <div className="col-xs-2"><img src={BASE_URL + 'images/header_right.png'} /></div>
+            </div>
+            <div class="row">
+              {partial}
+            </div>
           </div>
         </div>
       );
