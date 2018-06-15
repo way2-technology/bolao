@@ -34,10 +34,10 @@ define(['react', 'director', 'jsx!components/menu', 'jsx!components/ranking', 'j
             </div>
           </div>
           <div className="container">
-            <div className="row">
+            <div className="row header">
               <div className="col-xs-3"><img src={BASE_URL + 'images/header_left.png'} /></div>
-              <div className="col-xs-2"><img src={BASE_URL + 'images/131px-2018_FIFA_World_Cup.svg.png'} /></div>
-              <div className="col-xs-5"><h2>2018 FIFA WORLD CUP RUSSIA</h2><p>14 JUNE - 15 JULY</p></div>
+              <div className="col-xs-2"><img src={BASE_URL + 'images/254645_w.png'} /></div>
+              <div className="col-xs-5"><h1>2018 FIFA WORLD CUP <small>RUSSIA, 14 JUNE - 15 JULY</small></h1></div>
               <div className="col-xs-2"><img src={BASE_URL + 'images/header_right.png'} /></div>
             </div>
             <div class="row">

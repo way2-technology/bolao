@@ -30,8 +30,9 @@
 }
 
 .header {
-    width: 100%; 
-    max-width: 1050px;
+    background: #0f4583 url("/images/fwc_darkbluebg.png") repeat;
+    color: #fff;
+    font-family: "dusha_plusregular";
 }
 
 .premio {

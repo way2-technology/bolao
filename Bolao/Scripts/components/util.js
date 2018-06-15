@@ -8,7 +8,7 @@ define(['jquery', 'underscore', 'emojify', 'app/data', 'app/feed'], function ($,
   };
 
   Util.prototype.updateData = function (component) {
-    Feed.worldCupSfgIo(function (resultados) {
+    Feed.footballDataOrg(function (resultados) {
       var ultimo = _.find(resultados, function (placar) {
         return placar.ultimo;
       });

@@ -8,42 +8,51 @@ define(['jquery', 'underscore', 'app/placar'], function ($, _, Placar) {
   };
 
   return {
-    footballPool: function (callback) {
-      $.getJSON(BASE_URL + 'Proxy/FootballPool', function (data) {
+    worldCupSfgIo: function (callback) {
+      $.getJSON('http://worldcup.sfg.io/matches?callback=?', function (data) {
         var resultados = [];
         var ultimo = 1;
-        _.each(data, function (match) {
-          if (match.sResult !== 'U') {
-            var sScore = match.sScore.split('-');
-            var score1 = parseInt(sScore[0]);
-            var score2 = parseInt(sScore[1]);
-            resultados[match.iId - 1] = new Placar(match.iId, match.Team1.sName, match.Team2.sName, score1, score2);
-            ultimo = match.iId;
+        var i = 1;
+        _(data).chain().sortBy(function (match) {
+          return match.datetime;
+        }).each(function (match) {
+          if (match.status !== 'future') {
+            resultados[i - 1] = new Placar(i, match.home_team.country, match.away_team.country, match.home_team.goals, match.away_team.goals);
+            ultimo = i;
           } else {
-            resultados[match.iId - 1] = new Placar(match.iId, match.Team1.sName, match.Team2.sName);
+            resultados[i - 1] = new Placar(i, match.home_team.country, match.away_team.country);
           }
+          if (i === 64) {
+            resultados['campeao'] = match.winner;
+          }
+          i++;
         });
         marqueUltimoPlacar(resultados, ultimo);
         callback(resultados);
       });
     },
-    worldCupSfgIo: function (callback) {
-      $.getJSON('http://worldcup.sfg.io/matches?callback=?', function (data) {
+    footballDataOrg: function (callback) {
+      $.getJSON(BASE_URL + 'proxy/FootballData', function (data) {
         var resultados = [];
         var ultimo = 1;
-        _(data).chain().sortBy(function (match) {
-          return match.datetime;
+        var i = 1;
+        _(data.fixtures).chain().sortBy(function (match) {
+          return match.date;
         }).each(function (match) {
-          if (match.status !== 'future') {
-            resultados[match.match_number - 1] = new Placar(match.match_number, match.home_team.country, match.away_team.country, match.home_team.goals, match.away_team.goals);
-            ultimo = match.match_number;
+          if (match.status === 'SCHEDULED') {
+            return;
+          }
+          if (match.status !== 'TIMED') {
+            resultados[i - 1] = new Placar(i, match.homeTeamName, match.awayTeamName, match.result.goalsHomeTeam, match.result.goalsAwayTeam);
+            ultimo = i;
           } else {
-            resultados[match.match_number - 1] = new Placar(match.match_number, match.home_team.country, match.away_team.country);
+            resultados[i - 1] = new Placar(i, match.homeTeamName, match.awayTeamName);
           }
-          if (match.match_number === 64) {
-            resultados['campeao'] = match.winner;
+          if (i === 64) {
+            resultados['campeao'] = '-'; // TODO
           }
-        })
+          i++;
+        });
         marqueUltimoPlacar(resultados, ultimo);
         callback(resultados);
       });

@@ -15,11 +15,13 @@
     <AssemblyName>Bolao</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
-    <UseIISExpress>false</UseIISExpress>
+    <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <Use64BitIISExpress />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -149,8 +151,11 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="images\12worldcupcapsules-1-master675-v3.jpg" />
+    <Content Include="images\131px-2018_FIFA_World_Cup.svg.png" />
     <Content Include="images\160px-WC-2014-Brasil.svg.png" />
     <Content Include="images\2014_FIFA_WorldCup_Features_GameInfo_bg.jpg" />
+    <Content Include="images\2018_FIFA_World_Cup.png" />
+    <Content Include="images\254645_w.png" />
     <Content Include="images\br_SM-T110NDWAZTO_001_Front_black.jpg" />
     <Content Include="images\emoji\+1.png" />
     <Content Include="images\emoji\-1.png" />
@@ -1029,13 +1034,17 @@
     <Content Include="images\emoji\zzz.png" />
     <Content Include="images\flags16.png" />
     <Content Include="images\flags32.png" />
+    <Content Include="images\fwc_darkbluebg.png" />
     <Content Include="images\header.png" />
+    <Content Include="images\header_left.png" />
+    <Content Include="images\header_right.png" />
     <Content Include="Scripts\app.js" />
     <Content Include="Scripts\app\aposta.js" />
     <Content Include="Scripts\app\data.js" />
     <Content Include="Scripts\app\feed.js" />
     <Content Include="Scripts\app\flags.js" />
     <Content Include="Scripts\app\placar.js" />
+    <Content Include="Scripts\components\campeao.jsx" />
     <Content Include="Scripts\components\util.js" />
     <Content Include="Scripts\components\ranking-item.jsx" />
     <Content Include="Scripts\components\app.jsx" />
@@ -1087,6 +1096,7 @@
     <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
+    <None Include="Properties\PublishProfiles\Bolao20180615123349 - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\way2-bolao - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\way2-bolao - Web Deploy.pubxml" />
     <Content Include="Scripts\lib\underscore-min.map" />
@@ -1118,7 +1128,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>64595</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost/Bolao</IISUrl>
+          <IISUrl>http://localhost:64595/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
