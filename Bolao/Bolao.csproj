@@ -1036,8 +1036,12 @@
     <Content Include="images\flags32.png" />
     <Content Include="images\fwc_darkbluebg.png" />
     <Content Include="images\header.png" />
+    <Content Include="images\header2018.png" />
     <Content Include="images\header_left.png" />
     <Content Include="images\header_right.png" />
+    <Content Include="images\panini_fifa_world_cup_russia_2018_sticker_header.jpg" />
+    <Content Include="images\wcquiz-header-2.jpg" />
+    <Content Include="images\wcquiz-header-2.png" />
     <Content Include="Scripts\app.js" />
     <Content Include="Scripts\app\aposta.js" />
     <Content Include="Scripts\app\data.js" />

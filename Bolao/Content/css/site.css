@@ -30,7 +30,9 @@
 }
 
 .header {
-    background: #0f4583 url("/images/fwc_darkbluebg.png") repeat;
+    width: 100%;
+    max-width: 1150px;
+    background: #fff;
     color: #fff;
     font-family: "dusha_plusregular";
 }
