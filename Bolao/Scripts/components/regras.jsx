@@ -27,27 +27,27 @@ define(['react'], function (React) {
               <tr>
                 <td>1a fase + bônus</td>
                 <td>48</td>
-                <td>11/06/2014 às 18h</td>
+                <td>14/06/2018 às 11h</td>
               </tr>
               <tr>
                 <td>2a fase (oitavas)</td>
                 <td>8</td>
-                <td>27/06/2014 às 18h</td>
+                <td>29/06/2018 às 18h</td>
               </tr>
               <tr>
                 <td>3a fase (quartas)</td>
                 <td>4</td>
-                <td>02/07/2014 às 18h</td>
+                <td>05/07/2018 às 18h</td>
               </tr>
               <tr>
                 <td>4a fase (semi)</td>
                 <td>2</td>
-                <td>06/07/2014 às 18h</td>
+                <td>09/07/2018 às 18h</td>
               </tr>
               <tr>
                 <td>5a fase (finais)</td>
                 <td>2</td>
-                <td>10/07/2014 às 18h</td>
+                <td>13/07/2018 às 18h</td>
               </tr>
             </tbody>
           </table>
