@@ -18,6 +18,8 @@ define(['underscore', 'react', 'components/util', 'jsx!components/grupo'], funct
         <div>
           <h2>Resultados</h2>
           <p className="text-muted">{util.getUltimoPlacar(this)}</p>
+          <h3>2a fase</h3>
+          <Grupo key="OITAVAS" apostas={this.state.apostas} resultados={this.state.resultados} placares={[49, 50, 51, 52, 53, 54, 55, 56]} titulo={true} />
           <h3>1a fase</h3>
           <Grupo key="GRUPO A" apostas={this.state.apostas} resultados={this.state.resultados} placares={[ 1,  2, 17, 19, 33, 34]} titulo={true} />
           <Grupo key="GRUPO B" apostas={this.state.apostas} resultados={this.state.resultados} placares={[ 3,  4, 18, 20, 35, 36]} titulo={false} />
