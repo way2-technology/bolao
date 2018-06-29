@@ -3,17 +3,17 @@ using System.Web.Mvc;
 
 namespace Bolao.Controllers {
     public class ProxyController : Controller {
-        [OutputCache(NoStore = true, Duration = 0, VaryByParam = "None")]
+        [OutputCache(NoStore = true, Duration = 30, VaryByParam = "None")]
         public ActionResult FootballPool() {
             return GetContent("http://footballpool.dataaccess.eu/data/info.wso/AllGames/JSON");
         }
 
-        [OutputCache(NoStore = true, Duration = 0, VaryByParam = "None")]
+        [OutputCache(NoStore = true, Duration = 30, VaryByParam = "None")]
         public ActionResult WorldCupSfgIo() {
             return GetContent("http://worldcup.sfg.io/matches");
         }
 
-        [OutputCache(NoStore = true, Duration = 0, VaryByParam = "None")]
+        [OutputCache(NoStore = true, Duration = 30, VaryByParam = "None")]
         public ActionResult FootballData() {
             return GetContent("http://api.football-data.org/v1/competitions/467/fixtures");
         }
