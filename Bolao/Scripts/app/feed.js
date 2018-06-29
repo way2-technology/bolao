@@ -44,6 +44,17 @@ define(['jquery', 'underscore', 'app/placar'], function ($, _, Placar) {
           : result.goalsAwayTeam;
       };
 
+      var getWinner = function (homeTeamName, awayTeamName, result) {
+        if (result.penaltyShootout) {
+          return result.penaltyShootout.goalsHomeTeam > result.penaltyShootout.goalsAwayTeam
+            ? homeTeamName
+            : awayTeamName;
+        }
+        return getGoalsHomeTeam(result) > getGoalsAwayTeam(result)
+          ? homeTeamName
+          : awayTeamName;
+      };
+
       $.getJSON(BASE_URL + 'proxy/FootballData', function (data) {
         var resultados = [];
         var ultimo = 1;
@@ -61,7 +72,7 @@ define(['jquery', 'underscore', 'app/placar'], function ($, _, Placar) {
             resultados[i - 1] = new Placar(i, match.homeTeamName, match.awayTeamName);
           }
           if (i === 64) {
-            resultados['campeao'] = '-'; // TODO
+            resultados['campeao'] = getWinner(match.homeTeamName, match.awayTeamName, match.result);
           }
           i++;
         });
