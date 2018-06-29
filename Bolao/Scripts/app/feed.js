@@ -32,6 +32,18 @@ define(['jquery', 'underscore', 'app/placar'], function ($, _, Placar) {
       });
     },
     footballDataOrg: function (callback) {
+      var getGoalsHomeTeam = function (result) {
+        return result.extraTime
+          ? result.extraTime.goalsHomeTeam
+          : result.goalsHomeTeam;
+      };
+
+      var getGoalsAwayTeam = function (result) {
+        return result.extraTime
+          ? result.extraTime.goalsAwayTeam
+          : result.goalsAwayTeam;
+      };
+
       $.getJSON(BASE_URL + 'proxy/FootballData', function (data) {
         var resultados = [];
         var ultimo = 1;
@@ -43,7 +55,7 @@ define(['jquery', 'underscore', 'app/placar'], function ($, _, Placar) {
             return;
           }
           if (match.status !== 'TIMED') {
-            resultados[i - 1] = new Placar(i, match.homeTeamName, match.awayTeamName, match.result.goalsHomeTeam, match.result.goalsAwayTeam);
+            resultados[i - 1] = new Placar(i, match.homeTeamName, match.awayTeamName, getGoalsHomeTeam(match.result), getGoalsAwayTeam(match.result));
             ultimo = i;
           } else {
             resultados[i - 1] = new Placar(i, match.homeTeamName, match.awayTeamName);
