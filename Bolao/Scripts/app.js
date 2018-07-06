@@ -21,7 +21,7 @@
   jsx: {
     fileExtension: '.jsx'
   },
-  urlArgs: 'ver=1806300915'
+  urlArgs: 'ver=1807052250'
 });
 
 requirejs(['react', 'bootstrap', 'jsx!components/app'], function (React, bootstrap, App) {
