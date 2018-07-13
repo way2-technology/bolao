@@ -46,11 +46,11 @@ define(['jquery', 'underscore', 'app/placar'], function ($, _, Placar) {
 
       var getWinner = function (homeTeamName, awayTeamName, result) {
         if (result.penaltyShootout) {
-          return result.penaltyShootout.goalsHomeTeam > result.penaltyShootout.goalsAwayTeam
+          return result.penaltyShootout.goalsHomeTeam >= result.penaltyShootout.goalsAwayTeam
             ? homeTeamName
             : awayTeamName;
         }
-        return getGoalsHomeTeam(result) > getGoalsAwayTeam(result)
+        return getGoalsHomeTeam(result) >= getGoalsAwayTeam(result)
           ? homeTeamName
           : awayTeamName;
       };
@@ -71,7 +71,7 @@ define(['jquery', 'underscore', 'app/placar'], function ($, _, Placar) {
           } else {
             resultados[i - 1] = new Placar(i, match.homeTeamName, match.awayTeamName);
           }
-          if (i === 64) {
+          if (i === 64 && match.status !== 'TIMED') {
             resultados['campeao'] = getWinner(match.homeTeamName, match.awayTeamName, match.result);
           }
           i++;
