@@ -50,7 +50,12 @@ define(['jquery', 'underscore', 'app/placar'], function ($, _, Placar) {
             ? homeTeamName
             : awayTeamName;
         }
-        return getGoalsHomeTeam(result) >= getGoalsAwayTeam(result)
+        var goalsHomeTeam = getGoalsHomeTeam(result);
+        var goalsAwayTeam = getGoalsAwayTeam(result);
+        if (goalsHomeTeam === goalsAwayTeam) {
+          return '';
+        }
+        return goalsHomeTeam >= goalsAwayTeam
           ? homeTeamName
           : awayTeamName;
       };
